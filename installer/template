@@ -1,0 +1,16 @@
+. ./tools/command_exist.sh
+
+command_name=
+
+
+if [ $(command_exist $command_name) == "false" ]; then
+  if [ $OS == 'mac' ]; then
+    brew install "tool"
+  elif [ $OS == 'ubuntu' ]; then
+    sudo apt-get install "tool"
+  else
+    echo "this os is not supported!"
+  fi
+else
+  echo $command_name" has already been installed"
+fi

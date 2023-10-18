@@ -1,0 +1,25 @@
+## remove all files in dotfiles
+/dotfiles/*
+
+!/dotfiles/.gitconfig
+!/dotfiles/.latexmkrc
+!/dotfiles/.p10k.zsh
+!/dotfiles/.tmux.conf
+!/dotfiles/.zshrc
+!/dotfiles/.bashrc
+
+
+## add need files in .config
+!/dotfiles/.config/
+/dotfiles/.config/*
+!/dotfiles/.config/nvim
+!/dotfiles/.config/zsh
+!/dotfiles/.config/neofetch
+!/dotfiles/.config/pipr
+!/dotfiles/.config/sheldon
+!/dotfiles/.config/wandb
+!/dotfiles/.config/git
+!/dotfiles/.config/flake8
+!/dotfiles/.config/pep8
+!/dotfiles/.config/pycodestyle
+
