@@ -7,6 +7,7 @@
 !/dotfiles/.tmux.conf
 !/dotfiles/.zshrc
 !/dotfiles/.bashrc
+!/dotfiles/.wezterm.lua
 
 
 ## add need files in .config
