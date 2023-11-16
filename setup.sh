@@ -13,6 +13,13 @@ cd $BASEDIR
 # get OS name
 . ./tools/detect_os.sh
 
+if [ $OS == "mac" ] || [ $OS == "ubuntu" ]; then
+	echo "OS is $OS"
+else
+	echo "this os is not supported!"
+	exit 1
+fi
+
 # paste symboric link
 if [ -z "$DEBUG" ]; then
 	echo "Stage 1 paste link"
@@ -26,13 +33,21 @@ fi
 # update and upgrade
 echo "Stage 2 : package upgrade"
 
-if [ $OS == 'ubuntu' ]; then
-	sudo apt-get update -y
-	sudo apt-get install -y procps curl file gcc git build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev lzma liblzma-dev libbz2-dev
-	sudo apt-get upgrade -y
+. ./tools/command_exist.sh
+if [ $(command_exist "brew") == "false" ]; then
+	if [ $OS == 'mac' ]; then
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	elif [ $OS == 'ubuntu' ]; then
+		sudo apt-get update -y
+		sudo apt-get install -y procps curl file gcc git build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev lzma liblzma-dev libbz2-dev
+		sudo apt-get upgrade -y
 
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	fi
+else
+	echo "brew has already been installed"
 fi
 if [ -z $DEBUG ]; then
 	. ./tools/updater.sh
