@@ -60,6 +60,7 @@ echo "Stage 3 : isntall packages"
 . ./tools/command_exist.sh
 brew install $(cat install_list/brew.list | tr '\n' ' ')
 if [ $OS == 'mac' ]; then
+	brew install $(cat install_list/brew_only_mac.list | tr '\n' ' ')
 	brew install --cask $(cat install_list/brew_cask.list | tr '\n' ' ')
 fi
 brew autoremove
