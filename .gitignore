@@ -7,7 +7,6 @@
 !/dotfiles/.tmux.conf
 !/dotfiles/.zshrc
 !/dotfiles/.bashrc
-!/dotfiles/.wezterm.lua
 
 
 ## add need files in .config
@@ -15,6 +14,7 @@
 /dotfiles/.config/*
 !/dotfiles/.config/nvim
 !/dotfiles/.config/zsh
+!/dotfiles/.config/wezterm
 !/dotfiles/.config/neofetch
 !/dotfiles/.config/pipr
 !/dotfiles/.config/sheldon
