@@ -9,7 +9,7 @@ end)
 local config = {
 	color_scheme = "nord",
 	font_size = 16.0,
-	window_background_opacity = 0.70,
+	window_background_opacity = 0.85,
 	font = wezterm.font_with_fallback({
 		"Fira Code",
 		"HackGen Console",
