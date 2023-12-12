@@ -7,3 +7,6 @@ PATH="$HOME/.local/bin:$PATH"
 KMP_DUPLICATE_LIB_OK=TRUE
 
 eval $(/opt/homebrew/bin/brew shellenv)
+
+export PATH=$PATH:$HOME/go/bin
+export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
