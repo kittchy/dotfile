@@ -1,6 +1,7 @@
 # dotfile
 
-## supported 
+## supported
+
 - ubuntu
 - macOS
 
@@ -9,6 +10,7 @@
 ```bash
 ./zsh_install.sh
 ```
+
 ## setup environtment
 
 ```
