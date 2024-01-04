@@ -19,6 +19,7 @@
 !/dotfiles/.config/pipr
 !/dotfiles/.config/sheldon
 !/dotfiles/.config/wandb
+!/dotfiles/.config/starship.toml
 !/dotfiles/.config/git
 !/dotfiles/.config/flake8
 !/dotfiles/.config/pep8
