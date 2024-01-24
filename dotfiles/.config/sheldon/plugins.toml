@@ -29,9 +29,12 @@ apply = ['defer']
 remote = "https://raw.githubusercontent.com/aws/aws-cli/v2/bin/aws_zsh_completer.sh"
 apply = ["defer"]
 
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
+apply = ["source"]
 
-[plugins.starship]
-inline = 'eval "$(starship init zsh)"'
+# [plugins.starship]
+# inline = 'eval "$(starship init zsh)"'
 
 [plugins.autojump]
 github = 'wting/autojump'
