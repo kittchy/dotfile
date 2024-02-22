@@ -24,4 +24,7 @@
 !/dotfiles/.config/flake8
 !/dotfiles/.config/pep8
 !/dotfiles/.config/pycodestyle
+!/dotfiles/.config/skhd
+!/dotfiles/.config/yabai
+!/dotfiles/.config/sketchybar
 
