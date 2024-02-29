@@ -31,7 +31,7 @@ yabai -m config mouse_drop_action swap
 # general space settings
 yabai -m config layout bsp
 yabai -m config top_padding 30
-yabai -m config bottom_padding 30
+yabai -m config bottom_padding 20
 yabai -m config left_padding 12
 yabai -m config right_padding 12
 yabai -m config window_gap 12
@@ -79,6 +79,10 @@ yabai -m signal --add event=window_created \
 	action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"nibar-windows-jsx\"'"
 yabai -m signal --add event=space_changed \
 	action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"nibar-windows-jsx\"'"
+
+# # spacebar
+# SPACEBAR_HEIGHT=$(spacebar -m config height)
+# yabai -m config external_bar all:0:$SPACEBAR_HEIGHT
 
 # https://yasushisakai.com/mac_config.html
 # 外部ディスプレイだとsketchybarがかぶるので、外部ディスプレイの時だけpaddingを追加する

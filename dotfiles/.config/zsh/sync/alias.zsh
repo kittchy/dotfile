@@ -37,11 +37,24 @@ alias jonie="sftp kinouchi@133.15.57.7"
 
 alias gpp='g++ -Wall -O3 -std=c++17 -I/usr/local/include']
 
-# reaload window
-#
+# window manager
 function reload_macos_window () {
-    skhd --start-service
+    skhd --restart-service
     yabai --restart-service
     brew services restart sketchybar
 }
 alias reload_window="reload_macos_window"
+
+function start_macos_window () {
+    skhd --start-service
+    yabai --start-service
+    brew services start sketchybar
+}
+alias start_window="start_macos_window"
+
+function stop_macos_window () {
+    skhd --stop-service
+    yabai --stop-service
+    brew services stop sketchybar
+}
+alias stop_window="stop_macos_window"
