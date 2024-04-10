@@ -6,6 +6,8 @@ PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 PATH="$HOME/.local/bin:$PATH"
 KMP_DUPLICATE_LIB_OK=TRUE
 
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yaml"
+
 eval $(/opt/homebrew/bin/brew shellenv)
 
 export PATH=$PATH:$HOME/go/bin
