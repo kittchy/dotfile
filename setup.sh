@@ -40,7 +40,7 @@ if [ $(command_exist "brew") == "false" ]; then
 		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 	elif [ $OS == 'ubuntu' ]; then
 		sudo apt-get update -y
-		sudo apt-get install -y procps curl file gcc git build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev lzma liblzma-dev libbz2-dev
+		sudo apt-get install -y procps curl file gcc git build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev lzma liblzma-dev libbz2-dev pkg-config
 		sudo apt-get upgrade -y
 		export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

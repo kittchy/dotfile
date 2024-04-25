@@ -1,5 +1,6 @@
 [core]
     pager = delta
+	editor = nvim
 
 [interactive]
     diffFilter = delta --color-only
@@ -18,4 +19,4 @@
     colorMoved = default
 [user]
 	name = kittchy
-	email = kinouchi.takahiro.tg@tut.jp
+	email = drums.radwimps203@gmail.com
