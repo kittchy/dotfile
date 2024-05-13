@@ -42,9 +42,8 @@ setopt no_beep
 DIRSTACKSIZE=100
 setopt AUTO_PUSHD
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+source "$HOME/.rye/env"
+
 
 # rust setting
 source ~/.cargo/env

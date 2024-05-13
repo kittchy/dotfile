@@ -25,6 +25,8 @@ local config = {
 	colors = {
 		visual_bell = "#505050",
 	},
+	enable_scroll_bar = true,
+	window_decorations = "RESIZE",
 }
 
 -- key bindings

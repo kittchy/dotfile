@@ -28,6 +28,11 @@ shift + alt - 5 : yabai -m window --space 5
 shift + alt - 9 : yabai -m window --space prev
 shift + alt - 0 : yabai -m window --space next
 
+shift + cmd - n : yabai -m space --create && \
+                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+
 # fullscreen / floating
 # |                         | i3-wm                | yabai               |
 # | ----------------------- | -------------------- | ------------------- |
