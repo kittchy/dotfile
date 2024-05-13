@@ -32,7 +32,7 @@ local config = {
 local keybinds = require("keybinds")
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
-config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 2001 }
+config.leader = { key = "r", mods = "CTRL", timeout_milliseconds = 2001 }
 
 -- status bar
 require("status")
