@@ -44,22 +44,12 @@ setopt AUTO_PUSHD
 
 source "$HOME/.rye/env"
 
-
 # rust setting
 source ~/.cargo/env
 
 autoload -Uz compinit
 compinit
-
-# SCTK settings
-PATH=$PATH:~/SCTK/bin
-
-
-# rust setting
-source ~/.cargo/env
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 neofetch
-

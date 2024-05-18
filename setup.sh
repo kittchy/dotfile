@@ -30,43 +30,40 @@ else
 	echo "Skip make symboric link"
 fi
 
-# update and upgrade
 echo "Stage 2 : package upgrade"
-
 . ./tools/command_exist.sh
-if [ $(command_exist "brew") == "false" ]; then
-	if [ $OS == 'mac' ]; then
+if [ $OS == 'mac' ]; then
+	if [ $(command_exist "brew") == "false" ]; then
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	elif [ $OS == 'ubuntu' ]; then
-		sudo apt-get update -y
-		sudo apt-get install -y procps curl file gcc git build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev lzma liblzma-dev libbz2-dev pkg-config
-		sudo apt-get upgrade -y
-		export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	else
+		echo "brew has already been installed"
 	fi
-else
-	echo "brew has already been installed"
-fi
-if [ -z $DEBUG ]; then
-	. ./tools/updater.sh
-else
-	echo "Skip update tools"
+	brew update
+	brew upgrade
+elif [ $OS == 'ubuntu' ]; then
+	sudo apt-get update -y
+	sudo apt-get upgrade -y
+	sudo apt-get install software-properties-common
+	export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 fi
 
 echo "Stage 3 : isntall packages"
-# install some tools
 . ./tools/command_exist.sh
-brew install $(cat install_list/brew.list | tr '\n' ' ')
 if [ $OS == 'mac' ]; then
-	brew install $(cat install_list/brew_only_mac.list | tr '\n' ' ')
+	brew install $(cat install_list/mac/brew.list | tr '\n' ' ')
 	brew install --cask $(cat install_list/brew_cask.list | tr '\n' ' ')
+	brew autoremove
+elif [ $OS == 'ubuntu' ]; then
+	for ppa in $(cat install_list/ubuntu/ppa.list | tr '\n' ' '); do
+		sudo add-apt-repository -y $ppa
+	done
+	sudo apt-get -y update
+	sudo apt-get -y install $(cat install_list/ubuntu/apt.list | tr '\n' ' ')
+	sudo apt -y autoremove
 fi
-brew autoremove
 
 echo "Stage 4 Install package without package manager"
-
 # if tool doesn't distribute with package manager
 # please use installer/
 for f in $(ls installer/*.sh); do
@@ -78,3 +75,6 @@ echo "Stage 5 cargo package install"
 cargo install cargo-update
 cargo install-update -a
 cargo install $(cat install_list/cargo.list | tr '\n' ' ')
+
+echo "Stage 5 GO package install"
+go install $(cat install_list/cargo.list | tr '\n' ' ')
