@@ -58,3 +58,5 @@ function stop_macos_window () {
     brew services stop sketchybar
 }
 alias stop_window="stop_macos_window"
+
+alias activate_rye=". ./.venv/bin/activate"
