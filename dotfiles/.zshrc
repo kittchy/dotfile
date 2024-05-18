@@ -17,3 +17,8 @@ source "$HOME/.rye/env"
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+autoload -U compinit
+        compinit -i
+
+eval "$(fzf --zsh)"
