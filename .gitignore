@@ -1,7 +1,6 @@
 ## remove all files in dotfiles
 /dotfiles/*
 
-!/dotfiles/.gitconfig
 !/dotfiles/.latexmkrc
 !/dotfiles/.p10k.zsh
 !/dotfiles/.tmux.conf
