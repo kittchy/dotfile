@@ -33,6 +33,12 @@ alias tar_scp='tar_scp_func'
 # nvim 
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 
+# gpp
+alias gpp='g++ -Wall -O3 -std=c++17 -I/usr/local/include']
+
+# rye
+alias activate_rye=". ./.venv/bin/activate"
+
 if [[ $OS == 'mac' ]]; then
   # window manager
   function reload_macos_window () {
