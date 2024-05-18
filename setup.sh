@@ -44,7 +44,7 @@ if [ $OS == 'mac' ]; then
 elif [ $OS == 'ubuntu' ]; then
 	sudo apt-get update -y
 	sudo apt-get upgrade -y
-	sudo apt-get install software-properties-common
+	sudo apt-get install -y software-properties-common
 	export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 fi
 
@@ -52,7 +52,7 @@ echo "Stage 3 : isntall packages"
 . ./tools/command_exist.sh
 if [ $OS == 'mac' ]; then
 	brew install $(cat install_list/mac/brew.list | tr '\n' ' ')
-	brew install --cask $(cat install_list/brew_cask.list | tr '\n' ' ')
+	brew install --cask $(cat install_list/mac/brew_cask.list | tr '\n' ' ')
 	brew autoremove
 elif [ $OS == 'ubuntu' ]; then
 	for ppa in $(cat install_list/ubuntu/ppa.list | tr '\n' ' '); do
