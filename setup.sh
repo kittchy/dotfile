@@ -77,4 +77,4 @@ cargo install-update -a
 cargo install $(cat install_list/cargo.list | tr '\n' ' ')
 
 echo "Stage 5 GO package install"
-go install $(cat install_list/cargo.list | tr '\n' ' ')
+go install $(cat install_list/go.list | tr '\n' ' ')
