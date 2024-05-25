@@ -1,4 +1,7 @@
 ## remove all files in dotfiles
+dotfiles/.config/nvim/lazy-lock.json
+dotfiles/.config/nvim/lazyvim.json
+
 /dotfiles/*
 
 !/dotfiles/.latexmkrc
