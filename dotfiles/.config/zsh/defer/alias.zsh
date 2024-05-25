@@ -1,18 +1,18 @@
 
 
-## pipr
-alias pipr="pipr_fn"
-alias pipi="pipi_fn"
-alias pipo="pipo_fn"
-alias pipc="pipc_fn"
+# ## pipr
+# alias pipr="pipr_fn"
+# alias pipi="pipi_fn"
+# alias pipo="pipo_fn"
+# alias pipc="pipc_fn"
 
 ## lazygit
 alias lg="lazygit" 
 
 
-## peco 
-# history
-alias history='peco-select-history'
+# ## peco 
+# # history
+# alias history='peco-select-history'
 # docker exec
 alias de='docker exec -it $(docker ps | peco | cut -d " " -f 1) /bin/bash'
 # ssh 
@@ -39,6 +39,42 @@ function removegomi () {
   find . \( -name '.DS_Store' -or -name '._*' \) -delete -print;
 }
 alias rmgomi="removegomi"
+
+# fzf
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+
+setopt print_eight_bit
+
+## history fuzzy find
+## fzf history
+function fzf-select-history() {
+    BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER" --reverse)
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^r' fzf-select-history
+
+
+## fzf cdr
+function fzf-cdr() {
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf --reverse)
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N fzf-cdr
+setopt noflowcontrol
+bindkey '^q' fzf-cdr
 
 # 遊び
 alias aa="asciiquarium"
