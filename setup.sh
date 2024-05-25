@@ -33,12 +33,6 @@ fi
 echo "Stage 2 : package upgrade"
 . ./tools/command_exist.sh
 if [ $OS == 'mac' ]; then
-	if [ $(command_exist "brew") == "false" ]; then
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	else
-		echo "brew has already been installed"
-	fi
 	brew update
 	brew upgrade
 elif [ $OS == 'ubuntu' ]; then
