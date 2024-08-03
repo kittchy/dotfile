@@ -1,6 +1,7 @@
 git
 neovim
 neofetch
+nvm
 cmatrix
 pigz
 tmux
@@ -18,4 +19,3 @@ samtay/tui/tetris
 glow
 via
 go
-bubblewrap
