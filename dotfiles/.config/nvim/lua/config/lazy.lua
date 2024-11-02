@@ -22,8 +22,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.ruby" },
-    { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.editor.inc-rename" },
     { import = "lazyvim.plugins.extras.editor.dial" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
