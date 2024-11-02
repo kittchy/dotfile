@@ -9,7 +9,7 @@ end)
 local config = {
 	color_scheme = "nord",
 	font_size = 16.0,
-	window_background_opacity = 0.85,
+	window_background_opacity = 1.0,
 	font = wezterm.font_with_fallback({
 		"Fira Code",
 		"HackGen Console",
@@ -34,7 +34,7 @@ local config = {
 local keybinds = require("keybinds")
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
-config.leader = { key = "l", mods = "CTRL", timeout_milliseconds = 2001 }
+-- config.leader = { key = "l", mods = "CTRL", timeout_milliseconds = 2001 }
 
 -- status bar
 require("status")

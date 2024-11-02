@@ -1,3 +1,5 @@
 grep "RUN" Dockerfile | grep apt-get | grep update
 ---
 cat pipr.in
+---
+cat diar_infer_meeting.yaml | sed -s ''
