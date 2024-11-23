@@ -29,4 +29,4 @@ dotfiles/.config/nvim/lazyvim.json
 !/dotfiles/.config/skhd
 !/dotfiles/.config/yabai
 !/dotfiles/.config/sketchybar
-
+!/dotfiles/.config/zellij

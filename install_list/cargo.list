@@ -3,3 +3,4 @@ pipr
 lsd
 git-delta
 --locked bat
+--locked zellij
