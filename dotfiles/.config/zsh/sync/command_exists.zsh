@@ -5,4 +5,3 @@ function command_exist(){
     echo false
   fi
 }
-

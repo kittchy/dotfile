@@ -14,8 +14,8 @@ defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 [plugins.base16]
 github = "chriskempson/base16-shell"
 
-# [plugins.compinit]
-# inline = 'autoload -Uz compinit && zsh-defer compinit'
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
@@ -44,6 +44,10 @@ apply = ['PATH', 'defer']
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'
 apply = ["defer"]
+
+# [plugins.zsh-addr]
+# github = 'olets/zsh-abbr'
+# apply = ["defer"]
 
 [plugins.dotfiles-defers]
 local = "~/.config/zsh/defer"

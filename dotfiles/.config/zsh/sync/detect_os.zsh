@@ -1,4 +1,3 @@
-
 if [[ `uname` == 'Darwin' ]]; then
   OS='mac'
 elif [[ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]] then
