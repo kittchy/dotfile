@@ -76,6 +76,9 @@ zle -N fzf-cdr
 setopt noflowcontrol
 bindkey '^q' fzf-cdr
 
+## zellij
+alias zj="zellij"
+
 # 遊び
 alias aa="asciiquarium"
 alias clock="tty-clock -sc"
