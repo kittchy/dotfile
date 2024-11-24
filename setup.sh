@@ -68,7 +68,7 @@ done
 echo "Stage 5 cargo package install"
 cargo install cargo-update
 cargo install-update -a
-cargo install $(cat install_list/cargo.list | tr '\n' ' ')
+cargo install --locked $(cat install_list/cargo.list | tr '\n' ' ')
 
 echo "Stage 5 GO package install"
 go install $(cat install_list/go.list | tr '\n' ' ')

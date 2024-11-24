@@ -2,5 +2,5 @@ sheldon
 pipr
 lsd
 git-delta
---locked bat
---locked zellij
+bat
+zellij
