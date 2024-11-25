@@ -4,9 +4,9 @@ fi
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-# iTermのカラー設定用
-export CLICOLOR=1
-export TERM=xterm-256color
+# # iTermのカラー設定用
+# export CLICOLOR=1
+# export TERM=xterm-256color
 
 # 環境変数
 export LANG=ja_JP.UTF-8
@@ -42,13 +42,7 @@ setopt no_beep
 DIRSTACKSIZE=100
 setopt AUTO_PUSHD
 
-source "$HOME/.rye/env"
 
-# rust setting
-source ~/.cargo/env
-
-autoload -Uz compinit
-compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

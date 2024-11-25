@@ -1,15 +1,26 @@
+. ~/.config/zsh/sync/command_exists.zsh
+
 # alias settings
 # ls系
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-alias ls='lsd '
-alias ll='lsd -AlF'
-alias la='lsd -a'
-alias l='clear && lsd'
+if $(command_exist lsd); then
+  alias ls='lsd '
+  alias ll='lsd -AlF'
+  alias la='lsd -a'
+  alias l='clear && lsd'
+fi
+
+# top系
+if $(command_exist btop); then
+  alias top='btop'
+  alias htop='btop'
+fi
 
 # cd 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 # zsh
 alias zshref='clear && source ~/.zshrc'
@@ -63,5 +74,5 @@ if [[ $OS == 'mac' ]]; then
   alias stop_window="stop_macos_window"
 elif [[ $OS == 'ubuntu' ]]; then
   # apt
-  alias apt="apt-fast"
+  alias apt="sudo apt-fast"
 fi

@@ -1,18 +1,6 @@
-
-
-# ## pipr
-# alias pipr="pipr_fn"
-# alias pipi="pipi_fn"
-# alias pipo="pipo_fn"
-# alias pipc="pipc_fn"
-
 ## lazygit
 alias lg="lazygit" 
 
-
-# ## peco 
-# # history
-# alias history='peco-select-history'
 # docker exec
 alias de='docker exec -it $(docker ps | peco | cut -d " " -f 1) /bin/bash'
 # ssh 
