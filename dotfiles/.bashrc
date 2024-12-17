@@ -1,7 +1,19 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/bashrc.pre.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.pre.bash"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# sandboxのためのbashrc
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/bashrc.post.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.post.bash"
-. "$HOME/.cargo/env"
+# neovim
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/nvim-linux64/bin:$PATH"
+
+# env
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# go
+# export PATH=$PATH:$HOME/go/bin
+# export GOROOT=$(go env GOROOT)
+
+alias lg='lazygit'
+
+export PROMPT_COMMAND='history -a; history -c; history -r'
+source /usr/share/doc/git/contrib/completion/git-completion.bash
