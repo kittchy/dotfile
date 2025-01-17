@@ -33,7 +33,7 @@ alias local_zsh='nvim ~/.local_zsh'
 alias cat_detail="bat"
 
 # diff
-alias diff="delta"
+alias diff="delta -s"
 # tar
 alias tar_unzip='tar -zxvf'
 alias tar_zip='tar -zcvf'
@@ -76,3 +76,5 @@ elif [[ $OS == 'ubuntu' ]]; then
   # apt
   alias apt="sudo apt-fast"
 fi
+
+alias sandbox="ssh mitene-sandbox || { mitenecli login && ssh mitene-sandbox }"
