@@ -9,3 +9,4 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/takahiro.kinouchi/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
