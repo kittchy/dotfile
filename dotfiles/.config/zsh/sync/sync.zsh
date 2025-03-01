@@ -1,15 +1,11 @@
+# 主にzshの環境を記述する。
+
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# # iTermのカラー設定用
-# export CLICOLOR=1
-# export TERM=xterm-256color
-
-# 環境変数
-export LANG=ja_JP.UTF-8
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history

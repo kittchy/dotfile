@@ -14,55 +14,63 @@ cd $BASEDIR
 . ./tools/detect_os.sh
 
 if [ $OS == "mac" ] || [ $OS == "ubuntu" ]; then
-	echo "OS is $OS"
+    echo "OS is $OS"
 else
-	echo "this os is not supported!"
-	exit 1
+    echo "this os is not supported!"
+    exit 1
 fi
 
 # paste symboric link
 if [ -z "$DEBUG" ]; then
-	echo "Stage 1 paste link"
-	for f in $PWD/dotfiles/.??*; do
-		ln -snfv "$f" ~/
-	done
+    echo "Stage 1 paste link"
+    for f in $PWD/dotfiles/.??*; do
+        ln -snfv "$f" ~/
+    done
 else
-	echo "Skip make symboric link"
+    echo "Skip make symboric link"
+fi
+
+# Option: if you can clone kinouchi-tools, clone git@github.com:kittchy/kinouchi-tools.git
+if [ -d "$HOME/tools" ]; then
+    cd "$HOME/tools"
+    git pull
+else
+    git clone git@github.com:kittchy/kinouchi-tools.git $HOME/tools && bash $HOME/tools/setup.sh || true
 fi
 
 echo "Stage 2 : package upgrade"
 . ./tools/command_exist.sh
-if [ $OS == 'mac' ]; then
-	brew update
-	brew upgrade
-elif [ $OS == 'ubuntu' ]; then
-	sudo apt-get update -y
-	sudo apt-get upgrade -y
-	sudo apt-get install -y software-properties-common
-	export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+if [ "$OS" == 'mac' ]; then
+    brew update
+    brew upgrade
+elif [ "$OS" == 'ubuntu' ]; then
+    sudo apt-get update -y
+    sudo apt-get upgrade -y
+    sudo apt-get install -y software-properties-common
+    export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 fi
 
 echo "Stage 3 : isntall packages"
 . ./tools/command_exist.sh
 if [ $OS == 'mac' ]; then
-	brew install $(cat install_list/mac/brew.list | tr '\n' ' ')
-	brew install --cask $(cat install_list/mac/brew_cask.list | tr '\n' ' ')
-	brew autoremove
+    brew install $(cat install_list/mac/brew.list | tr '\n' ' ')
+    brew install --cask $(cat install_list/mac/brew_cask.list | tr '\n' ' ')
+    brew autoremove
 elif [ $OS == 'ubuntu' ]; then
-	for ppa in $(cat install_list/ubuntu/ppa.list | tr '\n' ' '); do
-		sudo add-apt-repository -y $ppa
-	done
-	sudo apt-get -y update
-	sudo apt-get -y install $(cat install_list/ubuntu/apt.list | tr '\n' ' ')
-	sudo apt -y autoremove
+    for ppa in $(cat install_list/ubuntu/ppa.list | tr '\n' ' '); do
+        sudo add-apt-repository -y $ppa
+    done
+    sudo apt-get -y update
+    sudo apt-get -y install $(cat install_list/ubuntu/apt.list | tr '\n' ' ')
+    sudo apt -y autoremove
 fi
 
 echo "Stage 4 Install package without package manager"
 # if tool doesn't distribute with package manager
 # please use installer/
 for f in $(ls installer/*.sh); do
-	echo "INSTALL : ${f%.*}"
-	. ./$f
+    echo "INSTALL : ${f%.*}"
+    . ./$f
 done
 
 echo "Stage 5 cargo package install"
