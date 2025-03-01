@@ -1,4 +1,6 @@
 # Path settingsを記述する。
+. $HOME/.config/zsh/sync/utils.zsh
+
 PATH=$PATH:~/SCTK/bin
 
 if [[ detect_os == 'mac' ]]; then
