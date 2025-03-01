@@ -1,5 +1,4 @@
 # Path settingsを記述する。
-
 PATH=$PATH:~/SCTK/bin
 
 if [[ detect_os == 'mac' ]]; then
@@ -49,7 +48,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export LANG=ja_JP.UTF-8
 
 # GPU環境であれば、cudaのパスを通す
-if [[ command_exist nvidia-smi ]]; then
+if $(command_exist nvidia-smi) ; then
   export PATH=/usr/local/cuda/bin:$PATH
   export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 fi
