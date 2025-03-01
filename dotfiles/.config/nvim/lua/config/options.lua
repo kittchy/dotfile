@@ -5,6 +5,7 @@ vim.wo.wrap = true
 vim.wo.linebreak = true
 vim.wo.list = false
 
+-- vim.opt.scrolloff = 8
 vim.opt.termguicolors = true
 vim.opt.winblend = 0 -- ウィンドウの不透明度
 vim.opt.pumblend = 0 -- ポップアップメニューの不透明度

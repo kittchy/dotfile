@@ -18,7 +18,6 @@ dotfiles/.config/nvim/lazyvim.json
 !/dotfiles/.config/zsh
 !/dotfiles/.config/wezterm
 !/dotfiles/.config/neofetch
-!/dotfiles/.config/pipr
 !/dotfiles/.config/sheldon
 !/dotfiles/.config/wandb
 !/dotfiles/.config/starship.toml

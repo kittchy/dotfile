@@ -1,5 +1,3 @@
-. ~/.config/zsh/sync/command_exists.zsh
-
 # alias settings
 # ls系
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
@@ -47,10 +45,7 @@ alias nvimrc="nvim ~/.config/nvim/init.vim"
 # gpp
 alias gpp='g++ -Wall -O3 -std=c++17 -I/usr/local/include']
 
-# rye
-alias activate_rye=". ./.venv/bin/activate"
-
-if [[ $OS == 'mac' ]]; then
+if [[ detect_os == 'mac' ]]; then
   # window manager
   function reload_macos_window () {
       skhd --restart-service
@@ -72,7 +67,7 @@ if [[ $OS == 'mac' ]]; then
       brew services stop sketchybar
   }
   alias stop_window="stop_macos_window"
-elif [[ $OS == 'ubuntu' ]]; then
+elif [[ detect_os == 'ubuntu' ]]; then
   # apt
   alias apt="sudo apt-fast"
 fi
