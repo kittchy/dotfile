@@ -1,5 +1,5 @@
 # Path settingsを記述する。
-. ~/.config/zsh/sync/utils.zsh
+. $HOME/.config/zsh/sync/utils.zsh
 
 PATH=$PATH:~/SCTK/bin
 

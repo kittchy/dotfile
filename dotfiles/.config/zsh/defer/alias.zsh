@@ -1,3 +1,4 @@
+
 ## lazygit
 alias lg="lazygit" 
 
@@ -51,6 +52,7 @@ bindkey '^q' fzf-cdr
 
 ## zellij
 alias zj="zellij"
+alias tmux="echo tmuxよりzellijを使うようにしましょう。zjにエイリアスをはってます。"
 
 # PDF圧縮
 function pdfmin()
