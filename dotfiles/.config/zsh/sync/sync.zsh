@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval $(fzf --zsh)
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
@@ -38,6 +38,11 @@ setopt no_beep
 DIRSTACKSIZE=100
 setopt AUTO_PUSHD
 
+# rust setting
+source ~/.cargo/env
+
+autoload -Uz compinit
+compinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
