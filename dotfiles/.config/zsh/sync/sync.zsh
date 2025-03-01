@@ -1,6 +1,6 @@
 # 主にzshの環境を記述する。
 
-
+unset ZSH_AUTOSUGGEST_USE_ASYNC
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
