@@ -3,10 +3,6 @@
 
 PATH=$PATH:~/SCTK/bin
 
-if [[ detect_os == 'mac' ]]; then
-  PATH=$PATH:~/Library/Application\ Support/pypoetry/venv/bin
-fi
-
 PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 PATH="$HOME/.local/bin:$PATH"
 KMP_DUPLICATE_LIB_OK=TRUE
@@ -15,7 +11,10 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yaml"
 
 if [[ $OS == 'mac' ]]; then
   export PATH="/opt/homebrew/bin/:$PATH"
-  eval $(brew shellenv)
+
+  export PATH=$PATH:~/Library/Application\ Support/pypoetry/venv/bin
+  export PATH=$PATH:/opt/homebrew/bin
+  
   eval "$(brew shellenv)"
   source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
