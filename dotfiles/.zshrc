@@ -1,4 +1,5 @@
 # init sheldon
+export PATH=$PATH:$HOME/.cargo/bin/ # sheldonがインストールされているところ
 eval "$(sheldon source)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
