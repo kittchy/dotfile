@@ -29,8 +29,6 @@ function detect_os () {
   fi
 }
 
-
-
-PATH=$PATH:$HOME/tools/bin
+export PATH=$PATH:$HOME/tools/bin
 
 OS=$(detect_os)
