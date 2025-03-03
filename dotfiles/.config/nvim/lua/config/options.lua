@@ -30,3 +30,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end
   end,
 })
+
+vim.opt.shiftwidth = 4 -- Size of an indent

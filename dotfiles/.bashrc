@@ -6,4 +6,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [[ -f "$HOME/.fig/shell/bashrc.post.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.post.bash"
 . "$HOME/.cargo/env"
 
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/takahiro.kinouchi/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
