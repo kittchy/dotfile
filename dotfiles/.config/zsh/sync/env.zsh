@@ -10,14 +10,18 @@ KMP_DUPLICATE_LIB_OK=TRUE
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yaml"
 
 if [[ $OS == 'mac' ]]; then
-  export PATH="/opt/homebrew/bin/:$PATH"
+    export PATH="/opt/homebrew/bin/:$PATH"
 
-  export PATH=$PATH:~/Library/Application\ Support/pypoetry/venv/bin
-  export PATH=$PATH:/opt/homebrew/bin
+    export PATH=$PATH:~/Library/Application\ Support/pypoetry/venv/bin
+    export PATH=$PATH:/opt/homebrew/bin
   
-  eval "$(brew shellenv)"
-  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+    eval "$(brew shellenv)"
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+    export LLVM_CONFIG=/opt/homebrew/Cellar/llvm/18.1.8/bin/llvm-config
+elif [[ $OS == 'linux' ]]; then
+    export LLVM_CONFIG=/usr/bin/llvm-config
+
 fi
 
 if $(command_exist rbenv) ; then
@@ -40,12 +44,6 @@ export CPLUS_INCLUDE_PATH=/usr/include/c++/version
 export CC=gcc
 export CXX=g++
 
-# LLVM setting
-if [[ $OS == 'mac' ]]; then
-  export LLVM_CONFIG=/opt/homebrew/Cellar/llvm/18.1.8/bin/llvm-config
-elif [[ $OS == 'linux' ]]; then
-  export LLVM_CONFIG=/usr/bin/llvm-config
-fi
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
@@ -57,3 +55,14 @@ if $(command_exist nvidia-smi) ; then
   export PATH=/usr/local/cuda/bin:$PATH
   export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 fi
+
+eval "$(uv generate-shell-completion zsh)"
+
+_uv_run_mod() {
+    if [[ "$words[2]" == "run" && "$words[CURRENT]" != -* ]]; then
+        _arguments '*:filename:_files'
+    else
+        _uv "$@"
+    fi
+}
+compdef _uv_run_mod uv
