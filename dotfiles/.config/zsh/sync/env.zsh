@@ -13,12 +13,12 @@ KMP_DUPLICATE_LIB_OK=TRUE
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yaml"
 
-if [[ detect_os == 'mac' ]]; then
-  eval $(/opt/homebrew/bin/brew shellenv)
+if [[ $OS == 'mac' ]]; then
+  export PATH="/opt/homebrew/bin/:$PATH"
+  eval $(brew shellenv)
   eval "$(brew shellenv)"
   source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
 fi
 
 if $(command_exist rbenv) ; then
@@ -42,7 +42,11 @@ export CC=gcc
 export CXX=g++
 
 # LLVM setting
-export LLVM_CONFIG=/usr/bin/llvm-config
+if [[ $OS == 'mac' ]]; then
+  export LLVM_CONFIG=/opt/homebrew/Cellar/llvm/18.1.8/bin/llvm-config
+elif [[ $OS == 'linux' ]]; then
+  export LLVM_CONFIG=/usr/bin/llvm-config
+fi
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 

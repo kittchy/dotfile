@@ -47,7 +47,8 @@ alias nvimrc="nvim ~/.config/nvim/init.vim"
 # gpp
 alias gpp='g++ -Wall -O3 -std=c++17 -I/usr/local/include']
 
-if [[ detect_os == 'mac' ]]; then
+if [[ $OS == 'mac' ]]; then
+
   # window manager
   function reload_macos_window () {
       skhd --restart-service
@@ -69,7 +70,8 @@ if [[ detect_os == 'mac' ]]; then
       brew services stop sketchybar
   }
   alias stop_window="stop_macos_window"
-elif [[ detect_os == 'ubuntu' ]]; then
+elif [[ $OS == 'ubuntu' ]]; then
   # apt
   alias apt="sudo apt-fast"
 fi
+
