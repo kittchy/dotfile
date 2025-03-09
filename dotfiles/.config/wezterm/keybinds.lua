@@ -105,6 +105,9 @@ return {
 		{ key = "DownArrow", mods = "SHIFT|CTRL", action = act.AdjustPaneSize({ "Down", 1 }) },
 		{ key = "Copy", mods = "NONE", action = act.CopyTo("Clipboard") },
 		{ key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
+		-- JIS配列でバックスラッシュが入れられない問題を解消
+		{ key = "¥", action = wezterm.action.SendKey({ key = "\\" }) },
+		{ key = "¥", mods = "ALT", action = wezterm.action.SendKey({ key = "¥" }) },
 	},
 
 	key_tables = {
