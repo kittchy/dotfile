@@ -34,6 +34,7 @@ fi
 if [ -d "$HOME/tools" ]; then
     cd "$HOME/tools"
     git pull
+    cd -
 else
     git clone git@github.com:kittchy/kinouchi-tools.git $HOME/tools && bash $HOME/tools/setup.sh || true
 fi
