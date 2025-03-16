@@ -3,10 +3,10 @@
 # ls系
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 if $(command_exist lsd); then
-  alias ls='lsd '
-  alias ll='lsd -AlF'
-  alias la='lsd -a'
-  alias l='clear && lsd'
+  alias ls='lsd -h '
+  alias ll='lsd -hAlF'
+  alias la='lsd -ah'
+  alias l='clear && lsd -h'
 fi
 
 # top系
@@ -20,24 +20,87 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
 
 # zsh
 alias zshref='clear && source ~/.zshrc'
 alias zshrc='nvim ~/.zshrc'
-alias zshconfig='nvim ~/.zshrc'
-alias extention='nvim ~/.zsh_extentions'
-alias local_zsh='nvim ~/.local_zsh'
+alias zshrc_extention='nvim ~/.zsh_extentions'
+alias zshrc_local='nvim ~/.local_zsh'
 
 # cat
-alias cat_detail="bat"
+if $(command_exist bat); then
+    alias cat="bat"
+fi
 
 # diff
-alias diff="delta"
+if $(command_exist delta); then
+    alias diff="delta"
+fi
+
 # tar
-alias tar_unzip='tar -zxvf'
-alias tar_zip='tar -zcvf'
-# tar_scp <local dir> <remote host> <保存先>
-function tar_scp_func(){ tar cvf - $1 | gzip | ssh $2 "tar zxvf - -C $3" }
+
+tar_zip_func() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: tar_zip <tar_file> <directory>"
+        return 1
+    fi
+
+    # Calculate size beforehand
+    size=$(du -sb "$2" | awk '{print $1}')
+
+    # Use tar with error checking and progress display (if pv is available)
+    if command -v pv >/dev/null 2>&1; then
+        tar -zcvf - "$2" | pv -s "$size" > "$1"
+    else
+        tar -zcvf "$1" "$2"
+    fi
+
+    # Check tar's exit status
+    if [ $? -ne 0 ]; then
+        echo "tar command failed!"
+        return 1
+    fi
+}
+
+
+tar_unzip_func() {
+    if [ -z "$1" ]; then
+        echo "Usage: tar_unzip <tar_file>"
+        return 1
+    fi
+
+    # Calculate size for pv
+    size=$(du -sb "$1" | awk '{print $1}')
+
+    # Use pv if available, otherwise fall back to standard tar
+    if command -v pv >/dev/null 2>&1; then
+        tar -zxvf "$1" | pv -s "$size" > /dev/null
+    else
+        tar -zxvf "$1"
+    fi
+
+
+    # Check tar's exit status
+    if [ $? -ne 0 ]; then
+        echo "tar command failed!"
+        return 1
+    fi
+}
+
+function tar_scp_func(){ 
+    if [ -z $1 && -z $2 && -z $3 ]; then
+        echo "Usage: tar_scp <local dir> <remote host> <保存先>"
+        return 1
+    fi
+    tar cvf - $1 | gzip | ssh $2 "tar zxvf - -C $3" 
+}
+# alias tar_unzip='tar -zxvf'
+# alias tar_zip='tar -zcvf'
+# alias tar_scp='tar_scp_func'
+alias tar_unzip='tar_unzip_func'
+alias tar_zip='tar_zip_func'
 alias tar_scp='tar_scp_func'
 
 # nvim 
@@ -77,6 +140,13 @@ fi
 ## lazygit
 alias lg="lazygit" 
 
+## git
+alias gc="git checkout"
+alias gs="git switch"
+alias gb="git branch"
+alias gp="git pull"
+alias gm="git merge"
+
 # docker exec
 alias de='docker exec -it $(docker ps | peco | cut -d " " -f 1) /bin/bash'
 # ssh 
@@ -98,7 +168,6 @@ setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
-
 setopt print_eight_bit
 
 ## history fuzzy find
@@ -127,6 +196,7 @@ bindkey '^q' fzf-cdr
 
 ## zellij
 alias zj="zellij"
+alias zja="zellij attach"
 alias tmux="echo tmuxよりzellijを使うようにしましょう。zjにエイリアスをはってます。"
 
 # PDF圧縮
